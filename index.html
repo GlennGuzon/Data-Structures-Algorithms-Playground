@@ -1,0 +1,3052 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<!-- Mobile Bottom Navigation -->
+<div class="mobile-bottom-nav">
+    <button onclick="jump('algorithms')"><i class="fas fa-brain"></i><span>Algorithms</span></button>
+    <button onclick="jump('arrays')"><i class="fas fa-list"></i><span>Arrays</span></button>
+    <button onclick="jump('stacks')"><i class="fas fa-layer-group"></i><span>Stacks</span></button>
+    <button onclick="jump('queues')"><i class="fas fa-stream"></i><span>Queues</span></button>
+    <button onclick="jump('trees')"><i class="fas fa-tree"></i><span>Trees</span></button>
+    <button id="scrollTopBtn" class="scroll-top-btn">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms & Data Structures Playground</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <button id="drawerBtn" class="drawer-btn">
+    <i class="fas fa-bars"></i>
+</button>
+
+        <div class="logo">
+            <i class="fas fa-code"></i>
+        </div>
+        <div class="title-wrap">
+            <h1>Data Structures & Algorithms Playground</h1>
+            <p>Interactive visualizations of C++ and Python implementations</p>
+        </div>
+        <nav>
+            <a href="#algorithms">Algorithms</a>
+            <a href="#arrays">Arrays</a>
+            <a href="#stacks">Stacks</a>
+            <a href="#queues">Queues</a>
+            <a href="#trees">Trees</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="photo-box">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=200&fit=crop" alt="Data Structures">
+                </div>
+                <div class="toc">
+                    <button onclick="jump('algorithms')"><i class="fas fa-brain"></i> 10 Algorithms</button>
+                    <button onclick="jump('arrays')"><i class="fas fa-list"></i> Arrays</button>
+                    <button onclick="jump('stacks')"><i class="fas fa-layer-group"></i> Stacks</button>
+                    <button onclick="jump('queues')"><i class="fas fa-stream"></i> Queues</button>
+                    <button onclick="jump('trees')"><i class="fas fa-tree"></i> Trees</button>
+                </div>
+                <hr>
+                <div class="download-section">
+                    <button class="btn-green" onclick="downloadAllAlgorithms()">
+                        <i class="fas fa-download"></i> Download All Code
+                    </button>
+                    <button class="btn-outline" id="themeToggle">
+                        <i class="fas fa-moon"></i> Night Mode
+                    </button>
+                </div>
+            </aside>
+
+            <main>
+                <!-- ALGORITHMS SECTION -->
+                <section id="algorithms" class="card">
+                    <h2><i class="fas fa-brain"></i> 10 Essential Algorithms</h2>
+                    <p class="section-desc">Each algorithm includes clear pseudocode and complexity analysis</p>
+                    
+                    <div class="algorithm-grid">
+                        <!-- Algorithm 1 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">01</span>
+                                <h3>Binary Search</h3>
+                                <span class="algo-badge">O(log n)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>BinarySearch(array, target):
+    left = 0
+    right = length(array) - 1
+    
+    while left <= right:
+        mid = (left + right) / 2
+        
+        if array[mid] == target:
+            return mid
+        else if array[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('binarySearch')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 2 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">02</span>
+                                <h3>Quick Sort</h3>
+                                <span class="algo-badge">O(n log n)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>QuickSort(array, low, high):
+    if low < high:
+        pivot = Partition(array, low, high)
+        QuickSort(array, low, pivot - 1)
+        QuickSort(array, pivot + 1, high)
+
+Partition(array, low, high):
+    pivot = array[high]
+    i = low - 1
+    
+    for j = low to high - 1:
+        if array[j] <= pivot:
+            i = i + 1
+            swap array[i] and array[j]
+    
+    swap array[i + 1] and array[high]
+    return i + 1</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('quickSort')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 3 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">03</span>
+                                <h3>BFS</h3>
+                                <span class="algo-badge">O(V + E)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>BFS(graph, start):
+    queue = empty queue
+    visited = empty set
+    result = empty list
+    
+    enqueue start to queue
+    add start to visited
+    
+    while queue is not empty:
+        current = dequeue from queue
+        append current to result
+        
+        for neighbor in graph[current]:
+            if neighbor not in visited:
+                enqueue neighbor to queue
+                add neighbor to visited
+    
+    return result</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('BFS')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 4 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">04</span>
+                                <h3>DFS</h3>
+                                <span class="algo-badge">O(V + E)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>DFS(graph, start):
+    stack = empty stack
+    visited = empty set
+    result = empty list
+    
+    push start to stack
+    
+    while stack is not empty:
+        current = pop from stack
+        
+        if current not in visited:
+            add current to visited
+            append current to result
+            
+            for neighbor in reversed(graph[current]):
+                push neighbor to stack
+    
+    return result</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('DFS')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 5 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">05</span>
+                                <h3>Merge Sort</h3>
+                                <span class="algo-badge">O(n log n)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>MergeSort(array):
+    if length(array) <= 1:
+        return array
+    
+    mid = length(array) / 2
+    left = MergeSort(array[0:mid])
+    right = MergeSort(array[mid:end])
+    
+    return Merge(left, right)
+
+Merge(left, right):
+    result = empty array
+    i = j = 0
+    
+    while i < length(left) and j < length(right):
+        if left[i] <= right[j]:
+            append left[i] to result
+            i = i + 1
+        else:
+            append right[j] to result
+            j = j + 1
+    
+    append remaining elements to result
+    return result</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('mergeSort')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 6 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">06</span>
+                                <h3>Dijkstra</h3>
+                                <span class="algo-badge">O(E log V)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>Dijkstra(graph, source):
+    dist = map with INF for all vertices
+    prev = empty map
+    pq = priority queue
+    
+    dist[source] = 0
+    add (0, source) to pq
+    
+    while pq not empty:
+        (current_dist, u) = pop from pq
+        
+        if current_dist > dist[u]:
+            continue
+        
+        for each neighbor v of u:
+            alt = dist[u] + weight(u, v)
+            if alt < dist[v]:
+                dist[v] = alt
+                prev[v] = u
+                add (alt, v) to pq
+    
+    return dist, prev</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('dijkstra')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 7 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">07</span>
+                                <h3>Kadane's</h3>
+                                <span class="algo-badge">O(n)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>Kadane(array):
+    max_current = array[0]
+    max_global = array[0]
+    
+    for i = 1 to length(array) - 1:
+        max_current = max(array[i], max_current + array[i])
+        if max_current > max_global:
+            max_global = max_current
+    
+    return max_global</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('kadane')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 8 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">08</span>
+                                <h3>Knapsack</h3>
+                                <span class="algo-badge">O(nW)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>Knapsack(weights, values, capacity):
+    n = length(weights)
+    dp = 2D array (n+1) x (capacity+1)
+    
+    for i = 0 to n:
+        for w = 0 to capacity:
+            if i == 0 or w == 0:
+                dp[i][w] = 0
+            else if weights[i-1] <= w:
+                dp[i][w] = max(values[i-1] + dp[i-1][w-weights[i-1]], 
+                              dp[i-1][w])
+            else:
+                dp[i][w] = dp[i-1][w]
+    
+    return dp[n][capacity]</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('knapsack')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 9 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">09</span>
+                                <h3>Floyd-Warshall</h3>
+                                <span class="algo-badge">O(V³)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>FloydWarshall(graph):
+    V = number of vertices
+    dist = copy of graph
+    
+    for k = 0 to V-1:
+        for i = 0 to V-1:
+            for j = 0 to V-1:
+                if dist[i][k] + dist[k][j] < dist[i][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+    
+    return dist</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('floydWarshall')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+
+                        <!-- Algorithm 10 -->
+                        <div class="algo-card">
+                            <div class="algo-header">
+                                <span class="algo-num">10</span>
+                                <h3>Fibonacci DP</h3>
+                                <span class="algo-badge">O(n)</span>
+                            </div>
+                            <div class="pseudocode">
+                                <h4>Pseudocode:</h4>
+                                <pre>Fibonacci(n):
+    if n <= 1:
+        return n
+    
+    dp = array of size n+1
+    dp[0] = 0
+    dp[1] = 1
+    
+    for i = 2 to n:
+        dp[i] = dp[i-1] + dp[i-2]
+    
+    return dp[n]</pre>
+                            </div>
+                            <button class="btn-code" onclick="showCode('fibonacci')">
+                                <i class="fas fa-code"></i> View Implementation
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ARRAYS SECTION -->
+                <section id="arrays" class="card">
+                    <h2><i class="fas fa-list"></i> Arrays <span class="badge">O(1) Access</span></h2>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-target="array-cpp">C++</button>
+                        <button class="tab-btn" data-target="array-py">Python</button>
+                    </div>
+                    
+                    <div id="array-cpp" class="tab-content active">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Dynamic Array Implementation</h3>
+                            <pre id="arr_cpp_1">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class DynamicArray {
+private:
+    int* arr;
+    int capacity;
+    int size;
+    
+    void resize() {
+        capacity *= 2;
+        int* newArr = new int[capacity];
+        for(int i = 0; i < size; i++) {
+            newArr[i] = arr[i];
+        }
+        delete[] arr;
+        arr = newArr;
+    }
+    
+public:
+    DynamicArray() : capacity(2), size(0) {
+        arr = new int[capacity];
+    }
+    
+    ~DynamicArray() {
+        delete[] arr;
+    }
+    
+    void push_back(int value) {
+        if(size == capacity) resize();
+        arr[size++] = value;
+    }
+    
+    int pop_back() {
+        if(size == 0) throw runtime_error("Array empty");
+        return arr[--size];
+    }
+    
+    int& operator[](int index) {
+        if(index < 0 || index >= size) 
+            throw out_of_range("Index out of bounds");
+        return arr[index];
+    }
+    
+    int getSize() { return size; }
+    int getCapacity() { return capacity; }
+    
+    void print() {
+        cout << "[";
+        for(int i = 0; i < size; i++) {
+            cout << arr[i];
+            if(i < size - 1) cout << ", ";
+        }
+        cout << "]" << endl;
+    }
+};</pre>
+                            <button onclick="downloadCode('arr_cpp_1', 'dynamic_array.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Sorting Algorithms</h3>
+                            <pre id="arr_cpp_2">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+// Bubble Sort
+void bubbleSort(vector<int>& arr) {
+    int n = arr.size();
+    for(int i = 0; i < n-1; i++) {
+        for(int j = 0; j < n-i-1; j++) {
+            if(arr[j] > arr[j+1]) {
+                swap(arr[j], arr[j+1]);
+            }
+        }
+    }
+}
+
+// Selection Sort
+void selectionSort(vector<int>& arr) {
+    int n = arr.size();
+    for(int i = 0; i < n-1; i++) {
+        int minIdx = i;
+        for(int j = i+1; j < n; j++) {
+            if(arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        swap(arr[i], arr[minIdx]);
+    }
+}
+
+// Insertion Sort
+void insertionSort(vector<int>& arr) {
+    int n = arr.size();
+    for(int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while(j >= 0 && arr[j] > key) {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+    }
+}</pre>
+                            <button onclick="downloadCode('arr_cpp_2', 'sorting_algorithms.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Array Operations</h3>
+                            <pre id="arr_cpp_3">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+// Reverse array
+void reverseArray(vector<int>& arr) {
+    int start = 0, end = arr.size() - 1;
+    while(start < end) {
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
+}
+
+// Find maximum element
+int findMax(vector<int>& arr) {
+    int maxVal = arr[0];
+    for(int i = 1; i < arr.size(); i++) {
+        if(arr[i] > maxVal) {
+            maxVal = arr[i];
+        }
+    }
+    return maxVal;
+}
+
+// Binary Search
+int binarySearch(vector<int>& arr, int target) {
+    int left = 0, right = arr.size() - 1;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if(arr[mid] == target) return mid;
+        if(arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
+
+// Rotate array
+void rotateArray(vector<int>& arr, int k) {
+    int n = arr.size();
+    k = k % n;
+    reverse(arr.begin(), arr.end());
+    reverse(arr.begin(), arr.begin() + k);
+    reverse(arr.begin() + k, arr.end());
+}</pre>
+                            <button onclick="downloadCode('arr_cpp_3', 'array_operations.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="array-py" class="tab-content">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Python Dynamic Array</h3>
+                            <pre id="arr_py_1">class DynamicArray:
+    def __init__(self):
+        self.capacity = 2
+        self.size = 0
+        self.arr = [0] * self.capacity
+    
+    def __len__(self):
+        return self.size
+    
+    def __getitem__(self, index):
+        if index < 0 or index >= self.size:
+            raise IndexError("Index out of bounds")
+        return self.arr[index]
+    
+    def __setitem__(self, index, value):
+        if index < 0 or index >= self.size:
+            raise IndexError("Index out of bounds")
+        self.arr[index] = value
+    
+    def _resize(self):
+        self.capacity *= 2
+        new_arr = [0] * self.capacity
+        for i in range(self.size):
+            new_arr[i] = self.arr[i]
+        self.arr = new_arr
+    
+    def append(self, value):
+        if self.size == self.capacity:
+            self._resize()
+        self.arr[self.size] = value
+        self.size += 1
+    
+    def pop(self):
+        if self.size == 0:
+            raise IndexError("Array is empty")
+        self.size -= 1
+        return self.arr[self.size]
+    
+    def __str__(self):
+        return "[" + ", ".join(str(self.arr[i]) for i in range(self.size)) + "]"
+
+# Example usage
+arr = DynamicArray()
+for i in range(10):
+    arr.append(i * 2)
+print(f"Array: {arr}")
+print(f"Size: {len(arr)}")
+print(f"Element at index 3: {arr[3]}")</pre>
+                            <button onclick="downloadCode('arr_py_1', 'dynamic_array.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Python Sorting Algorithms</h3>
+                            <pre id="arr_py_2"># Bubble Sort
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+# Selection Sort
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+# Insertion Sort
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i-1
+        while j >= 0 and key < arr[j]:
+            arr[j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
+
+# Quick Sort
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr)//2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)</pre>
+                            <button onclick="downloadCode('arr_py_2', 'sorting_algorithms.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Python Array Operations</h3>
+                            <pre id="arr_py_3"># Array operations in Python
+
+# Reverse array
+def reverse_array(arr):
+    return arr[::-1]
+
+# Find maximum element
+def find_max(arr):
+    return max(arr)
+
+# Find second largest
+def second_largest(arr):
+    if len(arr) < 2:
+        return None
+    largest = second = float('-inf')
+    for num in arr:
+        if num > largest:
+            second = largest
+            largest = num
+        elif num > second and num != largest:
+            second = num
+    return second if second != float('-inf') else None
+
+# Rotate array
+def rotate_array(arr, k):
+    n = len(arr)
+    k = k % n
+    return arr[-k:] + arr[:-k]
+
+# Remove duplicates
+def remove_duplicates(arr):
+    result = []
+    seen = set()
+    for item in arr:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+
+# Find pairs with given sum
+def find_pairs(arr, target):
+    pairs = []
+    seen = set()
+    for num in arr:
+        complement = target - num
+        if complement in seen:
+            pairs.append((complement, num))
+        seen.add(num)
+    return pairs</pre>
+                            <button onclick="downloadCode('arr_py_3', 'array_operations.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visual-section">
+                        <h3>Array Visualization</h3>
+                        <div class="controls">
+                            <button class="btn-green" onclick="startBubbleSort()">Bubble Sort</button>
+                            <button class="btn-outline" onclick="resetArray()">Reset Array</button>
+                            <button class="btn-outline" onclick="generateRandomArray()">Random</button>
+                        </div>
+                        <div id="arrayVisualization" class="array-vis">
+                            <!-- Array bars will be generated here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STACKS SECTION -->
+                <section id="stacks" class="card">
+                    <h2><i class="fas fa-layer-group"></i> Stacks <span class="badge">O(1) Push/Pop</span></h2>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-target="stack-cpp">C++</button>
+                        <button class="tab-btn" data-target="stack-py">Python</button>
+                        <button class="tab-btn" data-target="stack-expressions">Conversion C++</button>
+                    </div>
+                    
+                    <div id="stack-cpp" class="tab-content active">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Infix Expression Evaluation Stack</h3>
+                            <pre id="stack_cpp_1">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+using namespace std;
+
+class InfixCalculator {
+private:
+    int precedence(char op) {
+        if (op == '+' || op == '-') return 1;
+        if (op == '*' || op == '/') return 2;
+        return 0;
+    }
+
+    int applyOperation(int a, int b, char op) {
+        switch(op) {
+            case '+': return a + b;
+            case '-': return a - b;
+            case '*': return a * b;
+            case '/': return a / b;
+        }
+        return 0;
+    }
+
+public:
+    int evaluate(string expression) {
+        stack<int> values;
+        stack<char> operators;
+        
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression[i] == ' ') continue;
+            
+            if (isdigit(expression[i])) {
+                int val = 0;
+                while (i < expression.length() && isdigit(expression[i])) {
+                    val = (val * 10) + (expression[i] - '0');
+                    i++;
+                }
+                i--;
+                values.push(val);
+            }
+            else if (expression[i] == '(') {
+                operators.push('(');
+            }
+            else if (expression[i] == ')') {
+                while (!operators.empty() && operators.top() != '(') {
+                    int val2 = values.top(); values.pop();
+                    int val1 = values.top(); values.pop();
+                    char op = operators.top(); operators.pop();
+                    values.push(applyOperation(val1, val2, op));
+                }
+                if (!operators.empty()) operators.pop();
+            }
+            else {
+                while (!operators.empty() && precedence(operators.top()) >= precedence(expression[i])) {
+                    int val2 = values.top(); values.pop();
+                    int val1 = values.top(); values.pop();
+                    char op = operators.top(); operators.pop();
+                    values.push(applyOperation(val1, val2, op));
+                }
+                operators.push(expression[i]);
+            }
+        }
+        
+        while (!operators.empty()) {
+            int val2 = values.top(); values.pop();
+            int val1 = values.top(); values.pop();
+            char op = operators.top(); operators.pop();
+            values.push(applyOperation(val1, val2, op));
+        }
+        
+        return values.top();
+    }
+};
+
+int main() {
+    InfixCalculator calc;
+    string expr = "3 + (4 * 2) - 7";
+    cout << "Infix Expression: " << expr << endl;
+    cout << "Result: " << calc.evaluate(expr) << endl;
+    return 0;
+}</pre>
+                            <button onclick="downloadCode('stack_cpp_1', 'stack_implementation.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Postfix Evaluation Stack</h3>
+                            <pre id="stack_cpp_2">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+using namespace std;
+
+class PostfixCalculator {
+private:
+    bool isOperator(char c) {
+        return (c == '+' || c == '-' || c == '*' || c == '/');
+    }
+
+    int performOperation(int a, int b, char op) {
+        switch(op) {
+            case '+': return a + b;
+            case '-': return a - b;
+            case '*': return a * b;
+            case '/': return a / b;
+        }
+        return 0;
+    }
+
+public:
+    int evaluate(string expression) {
+        stack<int> st;
+        
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression[i] == ' ') continue;
+            
+            if (isdigit(expression[i])) {
+                int num = 0;
+                while (i < expression.length() && isdigit(expression[i])) {
+                    num = num * 10 + (expression[i] - '0');
+                    i++;
+                }
+                i--;
+                st.push(num);
+            }
+            else if (isOperator(expression[i])) {
+                int val2 = st.top(); st.pop();
+                int val1 = st.top(); st.pop();
+                st.push(performOperation(val1, val2, expression[i]));
+            }
+        }
+        return st.top();
+    }
+};
+
+int main() {
+    PostfixCalculator calc;
+    string expr = "3 4 2 * + 7 -";
+    cout << "Postfix Expression: " << expr << endl;
+    cout << "Result: " << calc.evaluate(expr) << endl;
+    return 0;
+}
+</pre>
+                            <button onclick="downloadCode('stack_cpp_2', 'stack_applications.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3.  Prefix Evaluation Stack</h3>
+                            <pre id="stack_cpp_3">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+class PrefixCalculator {
+private:
+    bool isOperator(char c) {
+        return (c == '+' || c == '-' || c == '*' || c == '/');
+    }
+
+    int performOperation(int a, int b, char op) {
+        switch(op) {
+            case '+': return a + b;
+            case '-': return a - b;
+            case '*': return a * b;
+            case '/': return a / b;
+        }
+        return 0;
+    }
+
+public:
+    int evaluate(string expression) {
+        stack<int> st;
+        
+        // Reverse the expression for prefix evaluation
+        reverse(expression.begin(), expression.end());
+        
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression[i] == ' ') continue;
+            
+            if (isdigit(expression[i])) {
+                int num = 0;
+                while (i < expression.length() && isdigit(expression[i])) {
+                    num = num * 10 + (expression[i] - '0');
+                    i++;
+                }
+                i--;
+                st.push(num);
+            }
+            else if (isOperator(expression[i])) {
+                int val1 = st.top(); st.pop();
+                int val2 = st.top(); st.pop();
+                st.push(performOperation(val1, val2, expression[i]));
+            }
+        }
+        return st.top();
+    }
+};
+
+int main() {
+    PrefixCalculator calc;
+    string expr = "- + 3 * 4 2 7";
+    cout << "Prefix Expression: " << expr << endl;
+    cout << "Result: " << calc.evaluate(expr) << endl;
+    return 0;
+};</pre>
+                            <button onclick="downloadCode('stack_cpp_3', 'two_stacks.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="stack-py" class="tab-content">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1.  Infix Expression Evaluation Stack</h3>
+                            <pre id="stack_py_1">class InfixCalculator:
+    def __init__(self):
+        self.precedence = {'+': 1, '-': 1, '*': 2, '/': 2}
+    
+    def _apply_operation(self, a, b, op):
+        if op == '+':
+            return a + b
+        elif op == '-':
+            return a - b
+        elif op == '*':
+            return a * b
+        elif op == '/':
+            return a // b
+        return 0
+    
+    def evaluate(self, expression):
+        values = []
+        operators = []
+        i = 0
+        
+        while i < len(expression):
+            if expression[i] == ' ':
+                i += 1
+                continue
+            
+            if expression[i].isdigit():
+                val = 0
+                while i < len(expression) and expression[i].isdigit():
+                    val = (val * 10) + int(expression[i])
+                    i += 1
+                i -= 1
+                values.append(val)
+            
+            elif expression[i] == '(':
+                operators.append('(')
+            
+            elif expression[i] == ')':
+                while operators and operators[-1] != '(':
+                    val2 = values.pop()
+                    val1 = values.pop()
+                    op = operators.pop()
+                    values.append(self._apply_operation(val1, val2, op))
+                if operators:
+                    operators.pop()
+            
+            else:
+                while (operators and operators[-1] != '(' and 
+                       self.precedence.get(operators[-1], 0) >= self.precedence.get(expression[i], 0)):
+                    val2 = values.pop()
+                    val1 = values.pop()
+                    op = operators.pop()
+                    values.append(self._apply_operation(val1, val2, op))
+                operators.append(expression[i])
+            
+            i += 1
+        
+        while operators:
+            val2 = values.pop()
+            val1 = values.pop()
+            op = operators.pop()
+            values.append(self._apply_operation(val1, val2, op))
+        
+        return values[-1]
+
+if __name__ == "__main__":
+    calc = InfixCalculator()
+    expr = "3 + (4 * 2) - 7"
+    print(f"Infix Expression: {expr}")
+    print(f"Result: {calc.evaluate(expr)}")</pre>
+                            <button onclick="downloadCode('stack_py_1', 'stack_implementation.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Postfix Evaluation Stack</h3>
+                            <pre id="stack_py_2">class PostfixCalculator:
+    def __init__(self):
+        pass
+    
+    def _is_operator(self, c):
+        return c in '+-*/'
+    
+    def _perform_operation(self, a, b, op):
+        if op == '+':
+            return a + b
+        elif op == '-':
+            return a - b
+        elif op == '*':
+            return a * b
+        elif op == '/':
+            return a // b
+        return 0
+    
+    def evaluate(self, expression):
+        stack = []
+        tokens = expression.split()
+        
+        for token in tokens:
+            if token.isdigit():
+                stack.append(int(token))
+            elif self._is_operator(token):
+                val2 = stack.pop()
+                val1 = stack.pop()
+                stack.append(self._perform_operation(val1, val2, token))
+        
+        return stack[-1]
+
+if __name__ == "__main__":
+    calc = PostfixCalculator()
+    expr = "3 4 2 * + 7 -"
+    print(f"Postfix Expression: {expr}")
+    print(f"Result: {calc.evaluate(expr)}")</pre>
+                            <button onclick="downloadCode('stack_py_2', 'stack_applications.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Prefix Evaluation Stack</h3>
+                            <pre id="stack_py_3">class PrefixCalculator:
+    def __init__(self):
+        pass
+    
+    def _is_operator(self, c):
+        return c in '+-*/'
+    
+    def _perform_operation(self, a, b, op):
+        if op == '+':
+            return a + b
+        elif op == '-':
+            return a - b
+        elif op == '*':
+            return a * b
+        elif op == '/':
+            return a // b
+        return 0
+    
+    def evaluate(self, expression):
+        stack = []
+        tokens = expression.split()
+        
+        # Reverse tokens for prefix evaluation
+        tokens = tokens[::-1]
+        
+        for token in tokens:
+            if token.isdigit():
+                stack.append(int(token))
+            elif self._is_operator(token):
+                val1 = stack.pop()
+                val2 = stack.pop()
+                stack.append(self._perform_operation(val1, val2, token))
+        
+        return stack[-1]
+
+if __name__ == "__main__":
+    calc = PrefixCalculator()
+    expr = "- + 3 * 4 2 7"
+    print(f"Prefix Expression: {expr}")
+    print(f"Result: {calc.evaluate(expr)}")</pre>
+                            <button onclick="downloadCode('stack_py_3', 'special_stack.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="stack-expressions" class="tab-content">
+                        <!-- Expression Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Infix to Postfix Conversion</h3>
+                            <pre id="stack_exp_1">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+using namespace std;
+
+// Function to return precedence of operators
+int precedence(char op) {
+    if(op == '^') return 3;
+    if(op == '*' || op == '/') return 2;
+    if(op == '+' || op == '-') return 1;
+    return 0;
+}
+
+// Function to check if character is operator
+bool isOperator(char ch) {
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^';
+}
+
+// Function to convert infix to postfix
+string infixToPostfix(string infix) {
+    stack&lt;char&gt; s;
+    string postfix = "";
+    
+    for(char ch : infix) {
+        // If operand, add to output
+        if(isalnum(ch)) {
+            postfix += ch;
+        }
+        // If '(', push to stack
+        else if(ch == '(') {
+            s.push(ch);
+        }
+        // If ')', pop until '('
+        else if(ch == ')') {
+            while(!s.empty() && s.top() != '(') {
+                postfix += s.top();
+                s.pop();
+            }
+            s.pop(); // Remove '('
+        }
+        // If operator
+        else if(isOperator(ch)) {
+            while(!s.empty() && precedence(ch) <= precedence(s.top())) {
+                postfix += s.top();
+                s.pop();
+            }
+            s.push(ch);
+        }
+    }
+    
+    // Pop remaining operators
+    while(!s.empty()) {
+        postfix += s.top();
+        s.pop();
+    }
+    
+    return postfix;
+}
+
+// Function to evaluate postfix expression
+int evaluatePostfix(string postfix) {
+    stack&lt;int&gt; s;
+    
+    for(char ch : postfix) {
+        if(isdigit(ch)) {
+            s.push(ch - '0');
+        }
+        else if(isOperator(ch)) {
+            int b = s.top(); s.pop();
+            int a = s.top(); s.pop();
+            int result;
+            
+            switch(ch) {
+                case '+': result = a + b; break;
+                case '-': result = a - b; break;
+                case '*': result = a * b; break;
+                case '/': result = a / b; break;
+                case '^': 
+                    result = 1;
+                    for(int i = 0; i < b; i++) result *= a;
+                    break;
+            }
+            
+            s.push(result);
+        }
+    }
+    
+    return s.top();
+}
+
+int main() {
+    string infix = "a+b*(c^d-e)^(f+g*h)-i";
+    string postfix = infixToPostfix(infix);
+    cout << "Infix: " << infix << endl;
+    cout << "Postfix: " << postfix << endl;
+    
+    // For numeric evaluation
+    string numericExp = "23*54*+9-";
+    int result = evaluatePostfix(numericExp);
+    cout << "Evaluate " << numericExp << " = " << result << endl;
+    
+    return 0;
+}</pre>
+                            <button onclick="downloadCode('stack_exp_1', 'infix_to_postfix.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Expression Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Infix to Prefix Conversion</h3>
+<pre id="stack_exp_2">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;cctype&gt;
+using namespace std;
+
+// Function to return precedence of operators
+int precedence(char op) {
+    if(op == '^') return 3;
+    if(op == '*' || op == '/') return 2;
+    if(op == '+' || op == '-') return 1;
+    return 0;
+}
+
+// Function to check if character is operator
+bool isOperator(char ch) {
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^';
+}
+
+// Function to convert infix to prefix
+string infixToPrefix(string infix) {
+    // Reverse the infix expression
+    reverse(infix.begin(), infix.end());
+    
+    // Replace '(' with ')' and vice versa
+    for(int i = 0; i < infix.length(); i++) {
+        if(infix[i] == '(') {
+            infix[i] = ')';
+        }
+        else if(infix[i] == ')') {
+            infix[i] = '(';
+        }
+    }
+    
+    // Convert to postfix
+    stack&lt;char&gt; s;
+    string result = "";
+    
+    for(char ch : infix) {
+        if(isalnum(ch)) {
+            result += ch;
+        }
+        else if(ch == '(') {
+            s.push(ch);
+        }
+        else if(ch == ')') {
+            while(!s.empty() && s.top() != '(') {
+                result += s.top();
+                s.pop();
+            }
+            s.pop();
+        }
+        else if(isOperator(ch)) {
+            while(!s.empty() && precedence(ch) < precedence(s.top())) {
+                result += s.top();
+                s.pop();
+            }
+            s.push(ch);
+        }
+    }
+    
+    while(!s.empty()) {
+        result += s.top();
+        s.pop();
+    }
+    
+    // Reverse the result to get prefix
+    reverse(result.begin(), result.end());
+    return result;
+}
+
+int main() {
+    string infix = "(a-b/c)*(a/k-l)";
+    string prefix = infixToPrefix(infix);
+    
+    cout << "Infix Expression: " << infix << endl;
+    cout << "Prefix Expression: " << prefix << endl;
+    
+    return 0;
+}</pre>
+                            <button onclick="downloadCode('stack_exp_2', 'infix_to_prefix.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Expression Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Prefix to Infix Conversion</h3>
+<pre id="stack_exp_3">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+using namespace std;
+
+// Function to check if character is operator
+bool isOperator(char ch) {
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^';
+}
+
+// Function to convert prefix to infix
+string prefixToInfix(string prefix) {
+    stack&lt;string&gt; s;
+    
+    // Read from right to left
+    for(int i = prefix.length() - 1; i >= 0; i--) {
+        char ch = prefix[i];
+        
+        if(isalnum(ch)) {
+            s.push(string(1, ch));
+        }
+        else if(isOperator(ch)) {
+            string operand1 = s.top(); s.pop();
+            string operand2 = s.top(); s.pop();
+            
+            string result = "(" + operand1 + ch + operand2 + ")";
+            s.push(result);
+        }
+    }
+    
+    return s.top();
+}
+
+// Function to evaluate prefix expression
+int evaluatePrefix(string prefix) {
+    stack&lt;int&gt; s;
+    
+    // Read from right to left
+    for(int i = prefix.length() - 1; i >= 0; i--) {
+        char ch = prefix[i];
+        
+        if(isdigit(ch)) {
+            s.push(ch - '0');
+        }
+        else if(isOperator(ch)) {
+            int operand1 = s.top(); s.pop();
+            int operand2 = s.top(); s.pop();
+            int result;
+            
+            switch(ch) {
+                case '+': result = operand1 + operand2; break;
+                case '-': result = operand1 - operand2; break;
+                case '*': result = operand1 * operand2; break;
+                case '/': result = operand1 / operand2; break;
+                case '^': 
+                    result = 1;
+                    for(int j = 0; j < operand2; j++) result *= operand1;
+                    break;
+            }
+            
+            s.push(result);
+        }
+    }
+    
+    return s.top();
+}
+
+int main() {
+    string prefix = "*+AB-CD";
+    string infix = prefixToInfix(prefix);
+    
+    cout << "Prefix Expression: " << prefix << endl;
+    cout << "Infix Expression: " << infix << endl;
+    
+    // Numeric evaluation
+    string numericPrefix = "-+*23*549";
+    int result = evaluatePrefix(numericPrefix);
+    cout << "Evaluate " << numericPrefix << " = " << result << endl;
+    
+    return 0;
+}</pre>
+                            <button onclick="downloadCode('stack_exp_3', 'prefix_to_infix.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visual-section">
+                        <h3>Stack Visualization</h3>
+                        <div class="controls">
+                            <input type="text" id="stackInput" placeholder="Enter value">
+                            <button class="btn-green" onclick="pushStack()">Push</button>
+                            <button class="btn-outline" onclick="popStack()">Pop</button>
+                            <button class="btn-outline" onclick="clearStack()">Clear</button>
+                        </div>
+                        <div id="stackVisualization" class="stack-vis">
+                            <div class="stack-empty">Stack is empty</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- QUEUES SECTION -->
+                <section id="queues" class="card">
+                    <h2><i class="fas fa-stream"></i> Queues <span class="badge">O(1) Enqueue/Dequeue</span></h2>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-target="queue-cpp">C++</button>
+                        <button class="tab-btn" data-target="queue-py">Python</button>
+                    </div>
+                    
+                    <div id="queue-cpp" class="tab-content active">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Queue Implementation</h3>
+                            <pre id="queue_cpp_1">#include &lt;iostream&gt;
+using namespace std;
+
+class Queue {
+private:
+    int* arr;
+    int capacity;
+    int front;
+    int rear;
+    int count;
+    
+public:
+    Queue(int size = 1000) : capacity(size), front(0), rear(-1), count(0) {
+        arr = new int[capacity];
+    }
+    
+    ~Queue() {
+        delete[] arr;
+    }
+    
+    bool isEmpty() {
+        return count == 0;
+    }
+    
+    bool isFull() {
+        return count == capacity;
+    }
+    
+    int size() {
+        return count;
+    }
+    
+    void enqueue(int value) {
+        if(isFull()) {
+            cout << "Queue is full!" << endl;
+            return;
+        }
+        rear = (rear + 1) % capacity;
+        arr[rear] = value;
+        count++;
+    }
+    
+    int dequeue() {
+        if(isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return -1;
+        }
+        int value = arr[front];
+        front = (front + 1) % capacity;
+        count--;
+        return value;
+    }
+    
+    int peek() {
+        if(isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return -1;
+        }
+        return arr[front];
+    }
+    
+    void display() {
+        if(isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return;
+        }
+        cout << "Queue: ";
+        for(int i = 0; i < count; i++) {
+            int index = (front + i) % capacity;
+            cout << arr[index] << " ";
+        }
+        cout << endl;
+    }
+};</pre>
+                            <button onclick="downloadCode('queue_cpp_1', 'queue_implementation.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Circular Queue</h3>
+                            <pre id="queue_cpp_2">#include &lt;iostream&gt;
+using namespace std;
+
+class CircularQueue {
+private:
+    int* arr;
+    int capacity;
+    int front;
+    int rear;
+    
+    bool isEmpty() {
+        return front == -1;
+    }
+    
+    bool isFull() {
+        return (rear + 1) % capacity == front;
+    }
+    
+public:
+    CircularQueue(int size = 1000) : capacity(size), front(-1), rear(-1) {
+        arr = new int[capacity];
+    }
+    
+    ~CircularQueue() {
+        delete[] arr;
+    }
+    
+    void enqueue(int value) {
+        if(isFull()) {
+            cout << "Queue is full!" << endl;
+            return;
+        }
+        
+        if(isEmpty()) {
+            front = rear = 0;
+        } else {
+            rear = (rear + 1) % capacity;
+        }
+        
+        arr[rear] = value;
+    }
+    
+    int dequeue() {
+        if(isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return -1;
+        }
+        
+        int value = arr[front];
+        
+        if(front == rear) {
+            front = rear = -1;
+        } else {
+            front = (front + 1) % capacity;
+        }
+        
+        return value;
+    }
+    
+    int peek() {
+        if(isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return -1;
+        }
+        return arr[front];
+    }
+    
+    int size() {
+        if(isEmpty()) return 0;
+        if(rear >= front) return rear - front + 1;
+        return capacity - front + rear + 1;
+    }
+    
+    void display() {
+        if(isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return;
+        }
+        
+        cout << "Circular Queue: ";
+        int i = front;
+        while(true) {
+            cout << arr[i] << " ";
+            if(i == rear) break;
+            i = (i + 1) % capacity;
+        }
+        cout << endl;
+    }
+};</pre>
+                            <button onclick="downloadCode('queue_cpp_2', 'circular_queue.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Priority Queue</h3>
+                            <pre id="queue_cpp_3">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class PriorityQueue {
+private:
+    vector&lt;pair&lt;int, int&gt;&gt; heap;  // (priority, value)
+    
+    void heapifyUp(int index) {
+        while(index > 0) {
+            int parent = (index - 1) / 2;
+            if(heap[parent].first > heap[index].first) {
+                swap(heap[parent], heap[index]);
+                index = parent;
+            } else {
+                break;
+            }
+        }
+    }
+    
+    void heapifyDown(int index) {
+        int smallest = index;
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+        
+        if(left < heap.size() && heap[left].first < heap[smallest].first) {
+            smallest = left;
+        }
+        
+        if(right < heap.size() && heap[right].first < heap[smallest].first) {
+            smallest = right;
+        }
+        
+        if(smallest != index) {
+            swap(heap[index], heap[smallest]);
+            heapifyDown(smallest);
+        }
+    }
+    
+public:
+    void enqueue(int priority, int value) {
+        heap.push_back({priority, value});
+        heapifyUp(heap.size() - 1);
+    }
+    
+    pair&lt;int, int&gt; dequeue() {
+        if(heap.empty()) {
+            return {-1, -1};
+        }
+        
+        pair&lt;int, int&gt; top = heap[0];
+        heap[0] = heap.back();
+        heap.pop_back();
+        
+        if(!heap.empty()) {
+            heapifyDown(0);
+        }
+        
+        return top;
+    }
+    
+    pair&lt;int, int&gt; peek() {
+        if(heap.empty()) {
+            return {-1, -1};
+        }
+        return heap[0];
+    }
+    
+    bool isEmpty() {
+        return heap.empty();
+    }
+    
+    int size() {
+        return heap.size();
+    }
+    
+    void display() {
+        cout << "Priority Queue: ";
+        for(const auto& item : heap) {
+            cout << "(" << item.first << "," << item.second << ") ";
+        }
+        cout << endl;
+    }
+};</pre>
+                            <button onclick="downloadCode('queue_cpp_3', 'priority_queue.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="queue-py" class="tab-content">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Python Queue Implementation</h3>
+                            <pre id="queue_py_1">class Queue:
+    def __init__(self, capacity=1000):
+        self.capacity = capacity
+        self.queue = [None] * capacity
+        self.front = 0
+        self.rear = -1
+        self.count = 0
+    
+    def is_empty(self):
+        return self.count == 0
+    
+    def is_full(self):
+        return self.count == self.capacity
+    
+    def size(self):
+        return self.count
+    
+    def enqueue(self, item):
+        if self.is_full():
+            print("Queue is full!")
+            return
+        self.rear = (self.rear + 1) % self.capacity
+        self.queue[self.rear] = item
+        self.count += 1
+    
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return None
+        item = self.queue[self.front]
+        self.front = (self.front + 1) % self.capacity
+        self.count -= 1
+        return item
+    
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self.queue[self.front]
+    
+    def display(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return
+        print("Queue:", end=" ")
+        for i in range(self.count):
+            index = (self.front + i) % self.capacity
+            print(self.queue[index], end=" ")
+        print()
+
+# Using collections.deque
+from collections import deque
+
+class QueueDeque:
+    def __init__(self):
+        self.queue = deque()
+    
+    def enqueue(self, item):
+        self.queue.append(item)
+    
+    def dequeue(self):
+        if not self.queue:
+            return None
+        return self.queue.popleft()
+    
+    def peek(self):
+        if not self.queue:
+            return None
+        return self.queue[0]
+    
+    def is_empty(self):
+        return len(self.queue) == 0
+    
+    def size(self):
+        return len(self.queue)</pre>
+                            <button onclick="downloadCode('queue_py_1', 'queue_implementation.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Python Circular Queue</h3>
+<pre id="queue_py_2">class CircularQueue:
+    def __init__(self, capacity=5):
+        self.capacity = capacity
+        self.queue = [None] * capacity
+        self.front = -1
+        self.rear = -1
+    
+    def is_empty(self):
+        return self.front == -1
+    
+    def is_full(self):
+        return (self.rear + 1) % self.capacity == self.front
+    
+    def enqueue(self, item):
+        if self.is_full():
+            print("Queue is full!")
+            return False
+        
+        if self.is_empty():
+            self.front = 0
+        
+        self.rear = (self.rear + 1) % self.capacity
+        self.queue[self.rear] = item
+        return True
+    
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return None
+        
+        item = self.queue[self.front]
+        
+        if self.front == self.rear:
+            self.front = self.rear = -1
+        else:
+            self.front = (self.front + 1) % self.capacity
+        
+        return item
+    
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self.queue[self.front]
+    
+    def size(self):
+        if self.is_empty():
+            return 0
+        if self.rear >= self.front:
+            return self.rear - self.front + 1
+        return self.capacity - self.front + self.rear + 1
+    
+    def display(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return
+        
+        print("Circular Queue:", end=" ")
+        i = self.front
+        while True:
+            print(self.queue[i], end=" ")
+            if i == self.rear:
+                break
+            i = (i + 1) % self.capacity
+        print()
+
+# Example usage
+cq = CircularQueue(5)
+cq.enqueue(10)
+cq.enqueue(20)
+cq.enqueue(30)
+cq.enqueue(40)
+cq.enqueue(50)
+cq.display()  # Output: 10 20 30 40 50
+cq.dequeue()
+cq.enqueue(60)
+cq.display()  # Output: 20 30 40 50 60</pre>
+                            <button onclick="downloadCode('queue_py_2', 'circular_queue.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Python Priority Queue</h3>
+<pre id="queue_py_3">import heapq
+
+class PriorityQueue:
+    def __init__(self):
+        self.heap = []
+    
+    def enqueue(self, priority, value):
+        heapq.heappush(self.heap, (priority, value))
+    
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        return heapq.heappop(self.heap)
+    
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self.heap[0]
+    
+    def is_empty(self):
+        return len(self.heap) == 0
+    
+    def size(self):
+        return len(self.heap)
+    
+    def display(self):
+        print("Priority Queue:", self.heap)
+
+# Custom Priority Queue without heapq
+class CustomPriorityQueue:
+    def __init__(self):
+        self.queue = []
+    
+    def enqueue(self, priority, value):
+        self.queue.append((priority, value))
+        self.queue.sort(key=lambda x: x[0])
+    
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        return self.queue.pop(0)
+    
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self.queue[0]
+    
+    def is_empty(self):
+        return len(self.queue) == 0
+    
+    def size(self):
+        return len(self.queue)
+    
+    def display(self):
+        print("Priority Queue:", self.queue)
+
+# Example usage
+pq = PriorityQueue()
+pq.enqueue(3, "Task 3")
+pq.enqueue(1, "Task 1")
+pq.enqueue(2, "Task 2")
+pq.enqueue(4, "Task 4")
+
+print("Next item:", pq.peek())  # Output: (1, 'Task 1')
+print("Processing:", pq.dequeue())  # Output: (1, 'Task 1')
+print("Processing:", pq.dequeue())  # Output: (2, 'Task 2')
+pq.display()  # Output: [(3, 'Task 3'), (4, 'Task 4')]</pre>
+                            <button onclick="downloadCode('queue_py_3', 'priority_queue.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visual-section">
+                        <h3>Queue Visualization</h3>
+                        <div class="controls">
+                            <input type="text" id="queueInput" placeholder="Enter value">
+                            <button class="btn-green" onclick="enqueueQueue()">Enqueue</button>
+                            <button class="btn-outline" onclick="dequeueQueue()">Dequeue</button>
+                            <button class="btn-outline" onclick="clearQueue()">Clear</button>
+                        </div>
+                        <div id="queueVisualization" class="queue-vis">
+                            <div class="queue-empty">Queue is empty</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TREES SECTION -->
+                <section id="trees" class="card">
+                    <h2><i class="fas fa-tree"></i> Trees <span class="badge">O(log n) Average</span></h2>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-target="tree-cpp">C++</button>
+                        <button class="tab-btn" data-target="tree-py">Python</button>
+                        <button class="tab-btn" data-target="tree-traversals">Traversals</button>
+                    </div>
+                    
+                    <div id="tree-cpp" class="tab-content active">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Preorder Traversal (Root → Left → Right)</h3>
+                            <pre id="tree_cpp_1">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+class TreeNode {
+public:
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    TreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
+};
+
+class PreorderTraversal {
+public:
+    // Recursive Preorder
+    void recursivePreorder(TreeNode* root) {
+        if (root == nullptr) return;
+        
+        cout << root->data << " ";
+        recursivePreorder(root->left);
+        recursivePreorder(root->right);
+    }
+    
+    // Iterative Preorder using stack
+    void iterativePreorder(TreeNode* root) {
+        if (root == nullptr) return;
+        
+        stack<TreeNode*> st;
+        st.push(root);
+        
+        while (!st.empty()) {
+            TreeNode* current = st.top();
+            st.pop();
+            
+            cout << current->data << " ";
+            
+            // Push right first so left is processed first (LIFO)
+            if (current->right != nullptr)
+                st.push(current->right);
+            if (current->left != nullptr)
+                st.push(current->left);
+        }
+    }
+};
+
+int main() {
+    // Create sample tree
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+    
+    PreorderTraversal preorder;
+    
+    cout << "Recursive Preorder: ";
+    preorder.recursivePreorder(root);
+    cout << endl;
+    
+    cout << "Iterative Preorder: ";
+    preorder.iterativePreorder(root);
+    cout << endl;
+    
+    return 0;
+}</pre>
+                            <button onclick="downloadCode('tree_cpp_1', 'binary_search_tree.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Inorder Traversal (Left → Root → Right)</h3>
+<pre id="tree_cpp_2">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+class TreeNode {
+public:
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    TreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
+};
+
+class InorderTraversal {
+public:
+    // Recursive Inorder
+    void recursiveInorder(TreeNode* root) {
+        if (root == nullptr) return;
+        
+        recursiveInorder(root->left);
+        cout << root->data << " ";
+        recursiveInorder(root->right);
+    }
+    
+    // Iterative Inorder using stack
+    void iterativeInorder(TreeNode* root) {
+        stack<TreeNode*> st;
+        TreeNode* current = root;
+        
+        while (current != nullptr || !st.empty()) {
+            // Reach the leftmost node
+            while (current != nullptr) {
+                st.push(current);
+                current = current->left;
+            }
+            
+            // Process node
+            current = st.top();
+            st.pop();
+            cout << current->data << " ";
+            
+            // Move to right subtree
+            current = current->right;
+        }
+    }
+};
+
+int main() {
+    // Create sample tree
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+    
+    InorderTraversal inorder;
+    
+    cout << "Recursive Inorder: ";
+    inorder.recursiveInorder(root);
+    cout << endl;
+    
+    cout << "Iterative Inorder: ";
+    inorder.iterativeInorder(root);
+    cout << endl;
+    
+    return 0;
+}</pre>
+                            <button onclick="downloadCode('tree_cpp_2', 'avl_tree.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Postorder Traversal (Left → Right → Root)</h3>
+<pre id="tree_cpp_3">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+class TreeNode {
+public:
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    TreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
+};
+
+class PostorderTraversal {
+public:
+    // Recursive Postorder
+    void recursivePostorder(TreeNode* root) {
+        if (root == nullptr) return;
+        
+        recursivePostorder(root->left);
+        recursivePostorder(root->right);
+        cout << root->data << " ";
+    }
+    
+    // Iterative Postorder using two stacks
+    void iterativePostorder(TreeNode* root) {
+        if (root == nullptr) return;
+        
+        stack<TreeNode*> st1, st2;
+        st1.push(root);
+        
+        while (!st1.empty()) {
+            TreeNode* current = st1.top();
+            st1.pop();
+            st2.push(current);
+            
+            if (current->left != nullptr)
+                st1.push(current->left);
+            if (current->right != nullptr)
+                st1.push(current->right);
+        }
+        
+        // Print from second stack
+        while (!st2.empty()) {
+            cout << st2.top()->data << " ";
+            st2.pop();
+        }
+    }
+    
+    // Alternative: Using single stack
+    void iterativePostorderSingleStack(TreeNode* root) {
+        if (root == nullptr) return;
+        
+        stack<TreeNode*> st;
+        TreeNode* current = root;
+        TreeNode* lastVisited = nullptr;
+        
+        while (!st.empty() || current != nullptr) {
+            if (current != nullptr) {
+                st.push(current);
+                current = current->left;
+            } else {
+                TreeNode* peekNode = st.top();
+                // If right child exists and hasn't been processed
+                if (peekNode->right != nullptr && lastVisited != peekNode->right) {
+                    current = peekNode->right;
+                } else {
+                    cout << peekNode->data << " ";
+                    lastVisited = peekNode;
+                    st.pop();
+                }
+            }
+        }
+    }
+};
+
+int main() {
+    // Create sample tree
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+    
+    PostorderTraversal postorder;
+    
+    cout << "Recursive Postorder: ";
+    postorder.recursivePostorder(root);
+    cout << endl;
+    
+    cout << "Iterative Postorder (Two Stacks): ";
+    postorder.iterativePostorder(root);
+    cout << endl;
+    
+    cout << "Iterative Postorder (Single Stack): ";
+    postorder.iterativePostorderSingleStack(root);
+    cout << endl;
+    
+    return 0;
+}</pre>
+                            <button onclick="downloadCode('tree_cpp_3', 'tree_operations.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="tree-py" class="tab-content">
+                        <!-- Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Preorder Traversal (Root → Left → Right)</h3>
+<pre id="tree_py_1">class TreeNode:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+
+class PreorderTraversal:
+    def recursive_preorder(self, root):
+        if root is None:
+            return
+        
+        print(root.data, end=" ")
+        self.recursive_preorder(root.left)
+        self.recursive_preorder(root.right)
+    
+    def iterative_preorder(self, root):
+        if root is None:
+            return
+        
+        stack = [root]
+        
+        while stack:
+            current = stack.pop()
+            print(current.data, end=" ")
+            
+            # Push right first so left is processed first (LIFO)
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
+
+if __name__ == "__main__":
+    # Create sample tree
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    
+    preorder = PreorderTraversal()
+    
+    print("Recursive Preorder:", end=" ")
+    preorder.recursive_preorder(root)
+    print()
+    
+    print("Iterative Preorder:", end=" ")
+    preorder.iterative_preorder(root)
+    print()</pre>
+                            <button onclick="downloadCode('tree_py_1', 'binary_search_tree.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Inorder Traversal (Left → Root → Right)</h3>
+<pre id="tree_py_2">class TreeNode:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+
+class InorderTraversal:
+    def recursive_inorder(self, root):
+        if root is None:
+            return
+        
+        self.recursive_inorder(root.left)
+        print(root.data, end=" ")
+        self.recursive_inorder(root.right)
+    
+    def iterative_inorder(self, root):
+        stack = []
+        current = root
+        
+        while stack or current:
+            # Reach the leftmost node
+            while current:
+                stack.append(current)
+                current = current.left
+            
+            # Process node
+            current = stack.pop()
+            print(current.data, end=" ")
+            
+            # Move to right subtree
+            current = current.right
+
+if __name__ == "__main__":
+    # Create sample tree
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    
+    inorder = InorderTraversal()
+    
+    print("Recursive Inorder:", end=" ")
+    inorder.recursive_inorder(root)
+    print()
+    
+    print("Iterative Inorder:", end=" ")
+    inorder.iterative_inorder(root)
+    print()</pre>
+                            <button onclick="downloadCode('tree_py_2', 'avl_tree.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Example 3 -->
+                        <div class="code-example">
+                            <h3>3.  Postorder Traversal (Left → Right → Root)</h3>
+<pre id="tree_py_3">class TreeNode:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+
+class PostorderTraversal:
+    def recursive_postorder(self, root):
+        if root is None:
+            return
+        
+        self.recursive_postorder(root.left)
+        self.recursive_postorder(root.right)
+        print(root.data, end=" ")
+    
+    def iterative_postorder(self, root):
+        if root is None:
+            return
+        
+        stack1 = [root]
+        stack2 = []
+        
+        while stack1:
+            current = stack1.pop()
+            stack2.append(current)
+            
+            if current.left:
+                stack1.append(current.left)
+            if current.right:
+                stack1.append(current.right)
+        
+        # Print from second stack
+        while stack2:
+            print(stack2.pop().data, end=" ")
+    
+    def iterative_postorder_single_stack(self, root):
+        if root is None:
+            return
+        
+        stack = []
+        current = root
+        last_visited = None
+        
+        while stack or current:
+            if current:
+                stack.append(current)
+                current = current.left
+            else:
+                peek_node = stack[-1]
+                # If right child exists and hasn't been processed
+                if peek_node.right and last_visited != peek_node.right:
+                    current = peek_node.right
+                else:
+                    print(peek_node.data, end=" ")
+                    last_visited = stack.pop()
+
+if __name__ == "__main__":
+    # Create sample tree
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    
+    postorder = PostorderTraversal()
+    
+    print("Recursive Postorder:", end=" ")
+    postorder.recursive_postorder(root)
+    print()
+    
+    print("Iterative Postorder (Two Stacks):", end=" ")
+    postorder.iterative_postorder(root)
+    print()
+    
+    print("Iterative Postorder (Single Stack):", end=" ")
+    postorder.iterative_postorder_single_stack(root)
+    print()</pre>
+                            <button onclick="downloadCode('tree_py_3', 'tree_operations.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="tree-traversals" class="tab-content">
+                        <!-- Traversal Example 1 -->
+                        <div class="code-example">
+                            <h3>1. Tree Traversal Algorithms</h3>
+<pre id="tree_trav_1">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+class TreeNode {
+public:
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    TreeNode(int value) : data(value), left(nullptr), right(nullptr) {}
+};
+
+class TreeTraversals {
+public:
+    // Recursive traversals
+    void inorderRecursive(TreeNode* root) {
+        if(root == nullptr) return;
+        inorderRecursive(root->left);
+        cout << root->data << " ";
+        inorderRecursive(root->right);
+    }
+    
+    void preorderRecursive(TreeNode* root) {
+        if(root == nullptr) return;
+        cout << root->data << " ";
+        preorderRecursive(root->left);
+        preorderRecursive(root->right);
+    }
+    
+    void postorderRecursive(TreeNode* root) {
+        if(root == nullptr) return;
+        postorderRecursive(root->left);
+        postorderRecursive(root->right);
+        cout << root->data << " ";
+    }
+    
+    // Iterative traversals
+    void inorderIterative(TreeNode* root) {
+        stack&lt;TreeNode*&gt; s;
+        TreeNode* current = root;
+        
+        cout << "Inorder (Iterative): ";
+        while(current != nullptr || !s.empty()) {
+            while(current != nullptr) {
+                s.push(current);
+                current = current->left;
+            }
+            
+            current = s.top();
+            s.pop();
+            cout << current->data << " ";
+            
+            current = current->right;
+        }
+        cout << endl;
+    }
+    
+    void preorderIterative(TreeNode* root) {
+        if(root == nullptr) return;
+        
+        stack&lt;TreeNode*&gt; s;
+        s.push(root);
+        
+        cout << "Preorder (Iterative): ";
+        while(!s.empty()) {
+            TreeNode* current = s.top();
+            s.pop();
+            cout << current->data << " ";
+            
+            if(current->right != nullptr) {
+                s.push(current->right);
+            }
+            if(current->left != nullptr) {
+                s.push(current->left);
+            }
+        }
+        cout << endl;
+    }
+    
+    void postorderIterative(TreeNode* root) {
+        if(root == nullptr) return;
+        
+        stack&lt;TreeNode*&gt; s1, s2;
+        s1.push(root);
+        
+        cout << "Postorder (Iterative): ";
+        while(!s1.empty()) {
+            TreeNode* current = s1.top();
+            s1.pop();
+            s2.push(current);
+            
+            if(current->left != nullptr) {
+                s1.push(current->left);
+            }
+            if(current->right != nullptr) {
+                s1.push(current->right);
+            }
+        }
+        
+        while(!s2.empty()) {
+            cout << s2.top()->data << " ";
+            s2.pop();
+        }
+        cout << endl;
+    }
+    
+    // Level order traversal (BFS)
+    void levelOrder(TreeNode* root) {
+        if(root == nullptr) return;
+        
+        queue&lt;TreeNode*&gt; q;
+        q.push(root);
+        
+        cout << "Level Order: ";
+        while(!q.empty()) {
+            TreeNode* current = q.front();
+            q.pop();
+            cout << current->data << " ";
+            
+            if(current->left != nullptr) {
+                q.push(current->left);
+            }
+            if(current->right != nullptr) {
+                q.push(current->right);
+            }
+        }
+        cout << endl;
+    }
+    
+    // Morris Inorder Traversal (Threaded Binary Tree)
+    void morrisInorder(TreeNode* root) {
+        TreeNode* current = root;
+        
+        cout << "Morris Inorder: ";
+        while(current != nullptr) {
+            if(current->left == nullptr) {
+                cout << current->data << " ";
+                current = current->right;
+            } else {
+                TreeNode* predecessor = current->left;
+                while(predecessor->right != nullptr && predecessor->right != current) {
+                    predecessor = predecessor->right;
+                }
+                
+                if(predecessor->right == nullptr) {
+                    predecessor->right = current;
+                    current = current->left;
+                } else {
+                    predecessor->right = nullptr;
+                    cout << current->data << " ";
+                    current = current->right;
+                }
+            }
+        }
+        cout << endl;
+    }
+};</pre>
+                            <button onclick="downloadCode('tree_trav_1', 'tree_traversals.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Traversal Example 2 -->
+                        <div class="code-example">
+                            <h3>2. Boundary Traversal</h3>
+<pre id="tree_trav_2">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class TreeNode {
+public:
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    TreeNode(int value) : data(value), left(nullptr), right(nullptr) {}
+};
+
+class BoundaryTraversal {
+private:
+    // Print left boundary (excluding leaf nodes)
+    void printLeftBoundary(TreeNode* root, vector&lt;int&gt;& result) {
+        if(root == nullptr) return;
+        
+        if(root->left != nullptr) {
+            result.push_back(root->data);
+            printLeftBoundary(root->left, result);
+        } else if(root->right != nullptr) {
+            result.push_back(root->data);
+            printLeftBoundary(root->right, result);
+        }
+        // Don't add leaf nodes here
+    }
+    
+    // Print leaf nodes
+    void printLeaves(TreeNode* root, vector&lt;int&gt;& result) {
+        if(root == nullptr) return;
+        
+        printLeaves(root->left, result);
+        
+        if(root->left == nullptr && root->right == nullptr) {
+            result.push_back(root->data);
+        }
+        
+        printLeaves(root->right, result);
+    }
+    
+    // Print right boundary (excluding leaf nodes, in reverse order)
+    void printRightBoundary(TreeNode* root, vector&lt;int&gt;& result) {
+        if(root == nullptr) return;
+        
+        if(root->right != nullptr) {
+            printRightBoundary(root->right, result);
+            result.push_back(root->data);
+        } else if(root->left != nullptr) {
+            printRightBoundary(root->left, result);
+            result.push_back(root->data);
+        }
+        // Don't add leaf nodes here
+    }
+    
+public:
+    vector&lt;int&gt; boundaryTraversal(TreeNode* root) {
+        vector&lt;int&gt; result;
+        
+        if(root == nullptr) return result;
+        
+        // Add root node
+        result.push_back(root->data);
+        
+        // Print left boundary
+        printLeftBoundary(root->left, result);
+        
+        // Print leaf nodes
+        printLeaves(root->left, result);
+        printLeaves(root->right, result);
+        
+        // Print right boundary
+        printRightBoundary(root->right, result);
+        
+        return result;
+    }
+    
+    // Spiral/Zigzag level order traversal
+    vector&lt;vector&lt;int&gt;&gt; zigzagLevelOrder(TreeNode* root) {
+        vector&lt;vector&lt;int&gt;&gt; result;
+        if(root == nullptr) return result;
+        
+        queue&lt;TreeNode*&gt; q;
+        q.push(root);
+        bool leftToRight = true;
+        
+        while(!q.empty()) {
+            int levelSize = q.size();
+            vector&lt;int&gt; level(levelSize);
+            
+            for(int i = 0; i < levelSize; i++) {
+                TreeNode* current = q.front();
+                q.pop();
+                
+                // Find position to fill node's value
+                int index = leftToRight ? i : (levelSize - 1 - i);
+                level[index] = current->data;
+                
+                if(current->left != nullptr) {
+                    q.push(current->left);
+                }
+                if(current->right != nullptr) {
+                    q.push(current->right);
+                }
+            }
+            
+            result.push_back(level);
+            leftToRight = !leftToRight;
+        }
+        
+        return result;
+    }
+    
+    // Vertical order traversal
+    vector&lt;vector&lt;int&gt;&gt; verticalOrder(TreeNode* root) {
+        vector&lt;vector&lt;int&gt;&gt; result;
+        if(root == nullptr) return result;
+        
+        map&lt;int, vector&lt;int&gt;&gt; verticalMap;
+        queue&lt;pair&lt;TreeNode*, int&gt;&gt; q;
+        q.push({root, 0});
+        
+        while(!q.empty()) {
+            auto current = q.front();
+            q.pop();
+            
+            TreeNode* node = current.first;
+            int hd = current.second;
+            
+            verticalMap[hd].push_back(node->data);
+            
+            if(node->left != nullptr) {
+                q.push({node->left, hd - 1});
+            }
+            if(node->right != nullptr) {
+                q.push({node->right, hd + 1});
+            }
+        }
+        
+        for(auto& entry : verticalMap) {
+            result.push_back(entry.second);
+        }
+        
+        return result;
+    }
+};</pre>
+                            <button onclick="downloadCode('tree_trav_2', 'boundary_traversal.cpp')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <!-- Traversal Example 3 -->
+                        <div class="code-example">
+                            <h3>3. Python Tree Traversals</h3>
+<pre id="tree_trav_3">class TreeNode:
+    def __init__(self, value):
+        self.data = value
+        self.left = None
+        self.right = None
+
+class TreeTraversals:
+    # Recursive traversals
+    def inorder_recursive(self, root, result=None):
+        if result is None:
+            result = []
+        if root:
+            self.inorder_recursive(root.left, result)
+            result.append(root.data)
+            self.inorder_recursive(root.right, result)
+        return result
+    
+    def preorder_recursive(self, root, result=None):
+        if result is None:
+            result = []
+        if root:
+            result.append(root.data)
+            self.preorder_recursive(root.left, result)
+            self.preorder_recursive(root.right, result)
+        return result
+    
+    def postorder_recursive(self, root, result=None):
+        if result is None:
+            result = []
+        if root:
+            self.postorder_recursive(root.left, result)
+            self.postorder_recursive(root.right, result)
+            result.append(root.data)
+        return result
+    
+    # Iterative traversals
+    def inorder_iterative(self, root):
+        result = []
+        stack = []
+        current = root
+        
+        while current or stack:
+            while current:
+                stack.append(current)
+                current = current.left
+            
+            current = stack.pop()
+            result.append(current.data)
+            current = current.right
+        
+        return result
+    
+    def preorder_iterative(self, root):
+        if not root:
+            return []
+        
+        result = []
+        stack = [root]
+        
+        while stack:
+            current = stack.pop()
+            result.append(current.data)
+            
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
+        
+        return result
+    
+    def postorder_iterative(self, root):
+        if not root:
+            return []
+        
+        result = []
+        stack1 = [root]
+        stack2 = []
+        
+        while stack1:
+            current = stack1.pop()
+            stack2.append(current)
+            
+            if current.left:
+                stack1.append(current.left)
+            if current.right:
+                stack1.append(current.right)
+        
+        while stack2:
+            result.append(stack2.pop().data)
+        
+        return result
+    
+    # Level order traversal
+    def level_order(self, root):
+        if not root:
+            return []
+        
+        result = []
+        queue = [root]
+        
+        while queue:
+            level_size = len(queue)
+            level = []
+            
+            for _ in range(level_size):
+                current = queue.pop(0)
+                level.append(current.data)
+                
+                if current.left:
+                    queue.append(current.left)
+                if current.right:
+                    queue.append(current.right)
+            
+            result.append(level)
+        
+        return result
+    
+    # Zigzag level order
+    def zigzag_level_order(self, root):
+        if not root:
+            return []
+        
+        result = []
+        queue = [root]
+        left_to_right = True
+        
+        while queue:
+            level_size = len(queue)
+            level = [0] * level_size
+            
+            for i in range(level_size):
+                current = queue.pop(0)
+                
+                index = i if left_to_right else (level_size - 1 - i)
+                level[index] = current.data
+                
+                if current.left:
+                    queue.append(current.left)
+                if current.right:
+                    queue.append(current.right)
+            
+            result.append(level)
+            left_to_right = not left_to_right
+        
+        return result
+    
+    # Boundary traversal
+    def boundary_traversal(self, root):
+        if not root:
+            return []
+        
+        result = [root.data]
+        
+        # Left boundary
+        def left_boundary(node):
+            if not node or (not node.left and not node.right):
+                return
+            result.append(node.data)
+            if node.left:
+                left_boundary(node.left)
+            else:
+                left_boundary(node.right)
+        
+        # Leaves
+        def leaves(node):
+            if not node:
+                return
+            leaves(node.left)
+            if not node.left and not node.right:
+                result.append(node.data)
+            leaves(node.right)
+        
+        # Right boundary
+        def right_boundary(node):
+            if not node or (not node.left and not node.right):
+                return
+            if node.right:
+                right_boundary(node.right)
+            else:
+                right_boundary(node.left)
+            result.append(node.data)
+        
+        left_boundary(root.left)
+        leaves(root.left)
+        leaves(root.right)
+        right_boundary(root.right)
+        
+        return result</pre>
+                            <button onclick="downloadCode('tree_trav_3', 'tree_traversals.py')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="visual-section">
+                        <h3>Tree Visualization & Traversal</h3>
+                        <div class="controls">
+                            <button class="btn-green" onclick="traverseTree('inorder')">Inorder</button>
+                            <button class="btn-green" onclick="traverseTree('preorder')">Preorder</button>
+                            <button class="btn-green" onclick="traverseTree('postorder')">Postorder</button>
+                            <button class="btn-outline" onclick="resetTree()">Reset</button>
+                        </div>
+                        <div class="tree-container">
+                            <div id="treeVisualization" class="tree-vis">
+                                <!-- Tree will be drawn here -->
+                            </div>
+                            <div class="traversal-result">
+                                <h4>Traversal Result:</h4>
+                                <div id="traversalOutput">Click a traversal button to see the order</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data Structures & Algorithms Playground © 2025 | C++ & Python Implementations</p>
+        <p>🐱 | 🐲 | 🐶 </p>
+    </footer>
+
+    <!-- Modal for Algorithm Implementations -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Algorithm Implementation</h3>
+            <div class="modal-tabs">
+                <button class="modal-tab active" onclick="switchModalTab('cpp')">C++</button>
+                <button class="modal-tab" onclick="switchModalTab('python')">Python</button>
+            </div>
+            <div id="modalCpp" class="modal-code active">
+                <pre id="modalCppCode"></pre>
+            </div>
+            <div id="modalPython" class="modal-code">
+                <pre id="modalPyCode"></pre>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-green" onclick="downloadModalCode()">
+                    <i class="fas fa-download"></i> Download
+                </button>
+                <button class="btn-outline" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
